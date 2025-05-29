@@ -7,13 +7,25 @@ dotenv.config({
     path:'./env'
 })
 
-connectDb();
+connectDb()
+.then(()=>{
+    app.on("error",(error)=>{
+        console.log("Server not listening:",error);
+        throw error;
+    })
+    app.listen(process.env.PORT || 8000,()=>{
+        console.log(`Server is Running at port :${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log("MONGO db Connection failed !!!",err);
+})
 
 
 
 /*
 
-This is the First approachj to connect to database which is done in Index file only but pollute the index file and make look big and it not modular also and in indsutry it is not written like it 
+This is the First approach to connect to database which is done in Index file only but pollute the index file and make look big and it not modular also and in indsutry it is not written like it 
 They use second method.
 
 import express from "express"
