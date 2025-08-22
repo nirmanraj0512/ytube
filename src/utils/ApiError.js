@@ -17,8 +17,8 @@ class ApiError extends Error{
 
         ///Ye kyu likhe hai isme bare me aur research karo 
 
-        if(statck){
-            this.stack=statck
+        if(stack){
+            this.stack=stack
         }
         else{
             Error.captureStackTrace(this,this.constructor)
