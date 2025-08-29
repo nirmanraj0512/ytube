@@ -21,4 +21,15 @@ app.use(express.static("public"))
 
 //Cookie parser
 app.use(cookieParser())
-export {app}
+
+
+//routes import 
+
+import  userRouter from "./routes/user.route.js"
+
+//routes declaration
+//Ye api/v1 ek standard practise hai
+app.use("/api/v1/users",userRouter)
+//ye hogya as a pprefix means aab jab bhi user  se related hoga tab phele jab bhi users  hoga rto sara control userRoute [par aa jayega ]\
+//Link aisa banega http:7000/users/register  yaha par user just as a middleware kaam kar rha hai jo user ka sara methid ko citnain karega like logi n also 
+export {app};

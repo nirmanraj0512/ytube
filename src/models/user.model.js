@@ -61,7 +61,7 @@ userSchema.pre("save",async function(next){
     //Yaha parcheckakrn jaroori hai ki password modify ho tabhi ye ho nhi to kuch bhi change hoga to ye run karega 
     if(!this.isModified("password"))return next();
     //bcrypt.hash two cheesz leta hia ek kisko bcrypt karna hai aur ek kitna no of round lagna hai hashing ka
-    this.password=bcrypt.hash(this.password,10)
+    this.password=await bcrypt.hash(this.password,10)
     next()
 })
 //Check password sahi hai ki nhi

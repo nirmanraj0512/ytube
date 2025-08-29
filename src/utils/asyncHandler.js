@@ -1,6 +1,7 @@
 ////Ye wala promise wala hai  
 const asyncHandler=(requestHandler)=>{
-    (req,res,next)=>{
+    //Yaha par errror tha return nhi likhe  the important hai 
+    return (req,res,next)=>{
         Promise
         //Agar promise fulfil hogya to ye hoga
         .resolve(requestHandler(req,res,next))
